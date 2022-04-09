@@ -2,21 +2,24 @@ using UnityEngine;
 
 public class BackgroundController : MonoBehaviour
 {
-    public WorldController worldController;
-    public float velocity = 5f;
+    public float slowdownCoefficient = 2f;
 
+    private UpMovementController cameraController;
     private float textureUnitSizeY;
 
     void Start()
     {
+        cameraController = Camera.main.GetComponent<UpMovementController>();
+
         Sprite spriteRenderer = GetComponent<SpriteRenderer>().sprite;
-        textureUnitSizeY = spriteRenderer.texture.height / spriteRenderer.pixelsPerUnit;
+        textureUnitSizeY = spriteRenderer.texture.height * transform.localScale.y / spriteRenderer.pixelsPerUnit;
     }
 
     void Update()
     {
-        Vector3 position = transform.position;
-        position.y = (worldController.currentPosition * velocity) % (textureUnitSizeY * transform.localScale.y);
-        transform.position = position;
+        Vector3 position = transform.localPosition;
+        position.y -= cameraController.velocity * Time.deltaTime / slowdownCoefficient;
+        position.y %= textureUnitSizeY;
+        transform.localPosition = position;
     }
 }
