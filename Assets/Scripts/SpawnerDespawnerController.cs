@@ -7,6 +7,7 @@ public class SpawnerDespawnerController : MonoBehaviour
     public List<GameObject> prefabs;
     public float spawnChancePerSecond = 1f;
     public float despawnDistance = 20f;
+    public Transform spawnedParent;
 
     private Sprite sprite;
     private HashSet<GameObject> spawned = new HashSet<GameObject>();
@@ -36,7 +37,7 @@ public class SpawnerDespawnerController : MonoBehaviour
 
             GameObject prefab = prefabs[Random.Range(0, prefabs.Count - 1)];
 
-            spawned.Add(Instantiate(prefab, pos, Quaternion.identity));
+            spawned.Add(Instantiate(prefab, pos, Quaternion.identity, spawnedParent));
         }
 
         if (spawned.Count != 0)
