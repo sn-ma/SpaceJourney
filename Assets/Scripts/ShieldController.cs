@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShieldController : MonoBehaviour
 {
     public float fadeInSpeed = 1f;
+    public float delayTimeSec = 0.5f;
     public float fadeOutSpeed = 0.1f;
 
     private SpriteRenderer spriteRenderer;
@@ -36,6 +37,9 @@ public class ShieldController : MonoBehaviour
             SetAlpha(GetAlpha() + fadeInSpeed * Time.fixedDeltaTime); // TODO: or should we use just deltaTime?
             yield return null;
         }
+
+        yield return new WaitForSeconds(delayTimeSec);
+
         while (spriteRenderer.material.color.a > 0f)
         {
             SetAlpha(GetAlpha() - fadeOutSpeed * Time.fixedDeltaTime);
