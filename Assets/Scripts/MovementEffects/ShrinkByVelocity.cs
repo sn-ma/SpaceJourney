@@ -9,8 +9,8 @@ public class ShrinkByVelocity : MonoBehaviour
 
     void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
-        movement = GetComponent<Inertial2DMovement>();
+        rigidbody2D = GetComponentInParent<Rigidbody2D>();
+        movement = GetComponentInParent<Inertial2DMovement>();
     }
 
     void Update()

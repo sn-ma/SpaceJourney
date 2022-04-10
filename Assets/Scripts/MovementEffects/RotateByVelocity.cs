@@ -8,7 +8,7 @@ public class RotateByVelocity : MonoBehaviour
 
     void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2D = GetComponentInParent<Rigidbody2D>();
     }
 
     void Update()
