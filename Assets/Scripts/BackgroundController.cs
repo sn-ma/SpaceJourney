@@ -11,8 +11,8 @@ public class BackgroundController : MonoBehaviour
     {
         cameraController = Camera.main.GetComponent<UpMovementController>();
 
-        Sprite spriteRenderer = GetComponent<SpriteRenderer>().sprite;
-        textureUnitSizeY = spriteRenderer.texture.height * transform.localScale.y / spriteRenderer.pixelsPerUnit;
+        Sprite sprite = GetComponent<SpriteRenderer>().sprite;
+        textureUnitSizeY = sprite.texture.height * transform.localScale.y / sprite.pixelsPerUnit;
     }
 
     void Update()
