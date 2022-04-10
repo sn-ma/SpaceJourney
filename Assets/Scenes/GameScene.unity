@@ -572,9 +572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccd252da7ceb0b4494933ec199eefc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 2383983546304667598, guid: 503121aa55fc1ef4dafd421592d78837, type: 3}
-  spawnChancePerSecond: 1
+  prefabsAndProbabilities:
+  - prefab: {fileID: 2383983546304667598, guid: 503121aa55fc1ef4dafd421592d78837, type: 3}
+    probabilityPerSecond: 1
   despawnDistance: 20
   spawnedParent: {fileID: 1633734207}
 --- !u!1 &1197791302

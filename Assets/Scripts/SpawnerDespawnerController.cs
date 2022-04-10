@@ -1,11 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnerDespawnerController : MonoBehaviour
 {
-    public List<GameObject> prefabs;
-    public float spawnChancePerSecond = 1f;
+    [System.Serializable]
+    public struct PrefabAndProbability
+    {
+        public GameObject prefab;
+        public float probabilityPerSecond;
+    }
+
+    public List<PrefabAndProbability> prefabsAndProbabilities;
     public float despawnDistance = 20f;
     public Transform spawnedParent;
 
@@ -20,24 +25,25 @@ public class SpawnerDespawnerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Random.Range(0f, 1f) < spawnChancePerSecond * Time.fixedDeltaTime)
+        foreach (PrefabAndProbability entity in prefabsAndProbabilities)
         {
-            Bounds bounds = sprite.bounds;
-            Vector3 minPos = bounds.center - bounds.size / 2f;
-            Vector3 maxPos = bounds.center + bounds.size / 2f;
-            minPos.Scale(transform.localScale);
-            maxPos.Scale(transform.localScale);
-            minPos += transform.position;
-            maxPos += transform.position;
+            if (Random.Range(0f, 1f) < entity.probabilityPerSecond * Time.fixedDeltaTime)
+            {
+                Bounds bounds = sprite.bounds;
+                Vector3 minPos = bounds.center - bounds.size / 2f;
+                Vector3 maxPos = bounds.center + bounds.size / 2f;
+                minPos.Scale(transform.localScale);
+                maxPos.Scale(transform.localScale);
+                minPos += transform.position;
+                maxPos += transform.position;
 
-            Vector3 pos = new Vector3();
-            pos.x = Random.Range(minPos.x, maxPos.x);
-            pos.y = Random.Range(minPos.y, maxPos.y);
-            pos.z = 0f;
+                Vector3 pos = new Vector3();
+                pos.x = Random.Range(minPos.x, maxPos.x);
+                pos.y = Random.Range(minPos.y, maxPos.y);
+                pos.z = 0f;
 
-            GameObject prefab = prefabs[Random.Range(0, prefabs.Count - 1)];
-
-            spawned.Add(Instantiate(prefab, pos, Quaternion.identity, spawnedParent));
+                spawned.Add(Instantiate(entity.prefab, pos, Quaternion.identity, spawnedParent));
+            }
         }
 
         if (spawned.Count != 0)
