@@ -9,7 +9,8 @@ public class SpawnerDespawnerController : MonoBehaviour
     public float despawnDistance = 20f;
 
     private Sprite sprite;
-    private Queue<GameObject> spawned = new Queue<GameObject>();
+    private HashSet<GameObject> spawned = new HashSet<GameObject>();
+    private HashSet<GameObject> toBeRemoved = new HashSet<GameObject>();
 
     void Start()
     {
@@ -35,20 +36,24 @@ public class SpawnerDespawnerController : MonoBehaviour
 
             GameObject prefab = prefabs[Random.Range(0, prefabs.Count - 1)];
 
-            spawned.Enqueue(Instantiate(prefab, pos, Quaternion.identity));
+            spawned.Add(Instantiate(prefab, pos, Quaternion.identity));
         }
 
-        while (spawned.Count != 0)
+        if (spawned.Count != 0)
         {
-            GameObject obj = spawned.Peek();
-            if ((transform.position - obj.transform.position).sqrMagnitude < Mathf.Pow(despawnDistance, 2f))
+            foreach (GameObject obj in spawned)
             {
-                break;
-            } else
+                if ((transform.position - obj.transform.position).sqrMagnitude > Mathf.Pow(despawnDistance, 2f))
+                {
+                    toBeRemoved.Add(obj);
+                }
+            }
+            foreach (GameObject obj in toBeRemoved)
             {
-                spawned.Dequeue();
+                spawned.Remove(obj);
                 Destroy(obj);
             }
+            toBeRemoved.Clear();
         }
     }
 }
