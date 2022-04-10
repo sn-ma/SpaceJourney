@@ -573,7 +573,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabsAndProbabilities:
-  - prefab: {fileID: 2383983546304667598, guid: 503121aa55fc1ef4dafd421592d78837, type: 3}
+  - prefab: {fileID: 2383983546304667598, guid: 9393323630866294a9f291e8eaeab0f8, type: 3}
+    probabilityPerSecond: 1
+  - prefab: {fileID: 2383983546304667598, guid: 66cf8fcda81963249be4a88a1cf17e52, type: 3}
     probabilityPerSecond: 1
   despawnDistance: 20
   spawnedParent: {fileID: 1633734207}
