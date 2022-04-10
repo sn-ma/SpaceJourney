@@ -27,22 +27,9 @@ public class SpawnerDespawnerController : MonoBehaviour
     {
         foreach (PrefabAndProbability entity in prefabsAndProbabilities)
         {
-            if (Random.Range(0f, 1f) < entity.probabilityPerSecond * Time.fixedDeltaTime)
+            if (MyUtilities.TossACoin(entity.probabilityPerSecond * Time.fixedDeltaTime))
             {
-                Bounds bounds = sprite.bounds;
-                Vector3 minPos = bounds.center - bounds.size / 2f;
-                Vector3 maxPos = bounds.center + bounds.size / 2f;
-                minPos.Scale(transform.localScale);
-                maxPos.Scale(transform.localScale);
-                minPos += transform.position;
-                maxPos += transform.position;
-
-                Vector3 pos = new Vector3();
-                pos.x = Random.Range(minPos.x, maxPos.x);
-                pos.y = Random.Range(minPos.y, maxPos.y);
-                pos.z = 0f;
-
-                spawned.Add(Instantiate(entity.prefab, pos, Quaternion.identity, spawnedParent));
+                spawned.Add(Instantiate(entity.prefab, GetRandomPos(), Quaternion.identity, spawnedParent));
             }
         }
 
@@ -62,5 +49,23 @@ public class SpawnerDespawnerController : MonoBehaviour
             }
             toBeRemoved.Clear();
         }
+    }
+
+    private Vector3 GetRandomPos()
+    {
+        Bounds bounds = sprite.bounds;
+        Vector3 minPos = bounds.center - bounds.size / 2f;
+        Vector3 maxPos = bounds.center + bounds.size / 2f;
+        minPos.Scale(transform.localScale);
+        maxPos.Scale(transform.localScale);
+        minPos += transform.position;
+        maxPos += transform.position;
+
+        Vector3 pos = new Vector3();
+        pos.x = Random.Range(minPos.x, maxPos.x);
+        pos.y = Random.Range(minPos.y, maxPos.y);
+        pos.z = 0f;
+
+        return pos;
     }
 }
