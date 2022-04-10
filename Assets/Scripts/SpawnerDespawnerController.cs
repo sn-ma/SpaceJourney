@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnerDespawnerController : MonoBehaviour
+public class SpawnerDespawnerController : MonoBehaviour
 {
     public List<GameObject> prefabs;
     public float spawnChancePerSecond = 1f;
@@ -41,7 +41,7 @@ public class EnemySpawnerDespawnerController : MonoBehaviour
         while (spawned.Count != 0)
         {
             GameObject obj = spawned.Peek();
-            if (transform.position.y - obj.transform.position.y < despawnDistance)
+            if ((transform.position - obj.transform.position).sqrMagnitude < Mathf.Pow(despawnDistance, 2f))
             {
                 break;
             } else
