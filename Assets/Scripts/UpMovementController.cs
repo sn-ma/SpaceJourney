@@ -5,12 +5,12 @@ public class UpMovementController : MonoBehaviour
     public float velocity = 10f;
     public float acceleration = 0f;
 
-    void Update()
+    void FixedUpdate()
     {
-        velocity += acceleration * Time.deltaTime;
+        velocity += acceleration * Time.fixedDeltaTime;
 
         Vector3 position = transform.position;
-        position.y += velocity * Time.deltaTime;
+        position.y += velocity * Time.fixedDeltaTime;
         transform.position = position;
     }
 }

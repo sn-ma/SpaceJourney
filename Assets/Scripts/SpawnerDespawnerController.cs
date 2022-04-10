@@ -16,9 +16,9 @@ public class SpawnerDespawnerController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Random.Range(0f, 1f) < spawnChancePerSecond * Time.deltaTime)
+        if (Random.Range(0f, 1f) < spawnChancePerSecond * Time.fixedDeltaTime)
         {
             Bounds bounds = sprite.bounds;
             Vector3 minPos = bounds.center - bounds.size / 2f;

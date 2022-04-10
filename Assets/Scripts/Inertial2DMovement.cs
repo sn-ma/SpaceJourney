@@ -19,7 +19,7 @@ public class Inertial2DMovement : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         UpdateVelocity(GetInputDirection());
     }
@@ -29,9 +29,9 @@ public class Inertial2DMovement : MonoBehaviour
         Vector2 velocity = rigidbody2D.velocity;
         if (inputDirection != null)
         {
-            velocity += (Vector2)inputDirection * Time.deltaTime * acceleration;
+            velocity += (Vector2)inputDirection * Time.fixedDeltaTime * acceleration;
         }
-        Vector2 frictionVelocity = velocity.normalized * -1 * Time.deltaTime * friction;
+        Vector2 frictionVelocity = velocity.normalized * -1 * Time.fixedDeltaTime * friction;
         if (frictionVelocity.sqrMagnitude < velocity.sqrMagnitude)
         {
             velocity += frictionVelocity;
