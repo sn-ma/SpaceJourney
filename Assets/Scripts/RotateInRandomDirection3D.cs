@@ -17,8 +17,8 @@ public class RotateInRandomDirection3D : MonoBehaviour
         transform.Rotate(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        transform.Rotate(eulers * Time.fixedDeltaTime);
+        transform.Rotate(eulers * Time.deltaTime);
     }
 }

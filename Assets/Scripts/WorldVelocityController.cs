@@ -5,12 +5,12 @@ public class WorldVelocityController : MonoBehaviour
     public float velocity = 10f;
     public float acceleration = 0f;
 
-    void FixedUpdate()
+    void Update()
     {
-        velocity += acceleration * Time.fixedDeltaTime;
+        velocity += acceleration * Time.deltaTime;
 
         Vector3 position = transform.position;
-        position.y += velocity * Time.fixedDeltaTime;
+        position.y += velocity * Time.deltaTime;
         transform.position = position;
     }
 }

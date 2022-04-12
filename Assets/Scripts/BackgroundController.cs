@@ -13,10 +13,10 @@ public class BackgroundController : MonoBehaviour
         textureUnitSizeY = sprite.texture.height * transform.localScale.y / sprite.pixelsPerUnit;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Vector3 position = transform.localPosition;
-        position.y -= worldVelocityController.velocity * Time.fixedDeltaTime / slowdownCoefficient;
+        position.y -= worldVelocityController.velocity * Time.deltaTime / slowdownCoefficient;
         position.y %= textureUnitSizeY;
         transform.localPosition = position;
     }

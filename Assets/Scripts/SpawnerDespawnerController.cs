@@ -24,11 +24,11 @@ public class SpawnerDespawnerController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         foreach (PrefabAndProbability entity in prefabsAndProbabilities)
         {
-            if (MyUtilities.TossACoin(entity.probabilityPerSecond * Time.fixedDeltaTime))
+            if (MyUtilities.TossACoin(entity.probabilityPerSecond * Time.deltaTime))
             {
                 GameObject spawnedObject = Instantiate(entity.prefab, GetRandomPos(), Quaternion.identity, spawnedParent);
                 Rigidbody2D rb = spawnedObject.GetComponent<Rigidbody2D>();
