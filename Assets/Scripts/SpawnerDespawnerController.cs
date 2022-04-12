@@ -13,6 +13,7 @@ public class SpawnerDespawnerController : MonoBehaviour
     public List<PrefabAndProbability> prefabsAndProbabilities;
     public float despawnDistance = 20f;
     public Transform spawnedParent;
+    public WorldVelocityController worldVelocityController;
 
     private Sprite sprite;
     private HashSet<GameObject> spawned = new HashSet<GameObject>();
@@ -29,7 +30,13 @@ public class SpawnerDespawnerController : MonoBehaviour
         {
             if (MyUtilities.TossACoin(entity.probabilityPerSecond * Time.fixedDeltaTime))
             {
-                spawned.Add(Instantiate(entity.prefab, GetRandomPos(), Quaternion.identity, spawnedParent));
+                GameObject spawnedObject = Instantiate(entity.prefab, GetRandomPos(), Quaternion.identity, spawnedParent);
+                Rigidbody2D rb = spawnedObject.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.velocity += new Vector2(0f, -worldVelocityController.velocity);
+                }
+                spawned.Add(spawnedObject);
             }
         }
 

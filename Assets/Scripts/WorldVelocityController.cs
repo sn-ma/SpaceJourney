@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UpMovementController : MonoBehaviour
+public class WorldVelocityController : MonoBehaviour
 {
     public float velocity = 10f;
     public float acceleration = 0f;

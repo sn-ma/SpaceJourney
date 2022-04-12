@@ -4,13 +4,11 @@ public class BackgroundController : MonoBehaviour
 {
     public float slowdownCoefficient = 2f;
 
-    private UpMovementController cameraController;
+    public WorldVelocityController worldVelocityController;
     private float textureUnitSizeY;
 
     void Start()
     {
-        cameraController = Camera.main.GetComponent<UpMovementController>();
-
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         textureUnitSizeY = sprite.texture.height * transform.localScale.y / sprite.pixelsPerUnit;
     }
@@ -18,7 +16,7 @@ public class BackgroundController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 position = transform.localPosition;
-        position.y -= cameraController.velocity * Time.fixedDeltaTime / slowdownCoefficient;
+        position.y -= worldVelocityController.velocity * Time.fixedDeltaTime / slowdownCoefficient;
         position.y %= textureUnitSizeY;
         transform.localPosition = position;
     }
