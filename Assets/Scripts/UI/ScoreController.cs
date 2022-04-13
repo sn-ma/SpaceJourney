@@ -6,9 +6,9 @@ public class ScoreController : MonoBehaviour
     private Text text;
     private int initialTime = 0;
 
-    public int GetScore()
+    public long GetScore()
     {
-        return (int)Time.realtimeSinceStartup - initialTime;
+        return (long)Time.realtimeSinceStartup - initialTime;
     }
 
     void Start()

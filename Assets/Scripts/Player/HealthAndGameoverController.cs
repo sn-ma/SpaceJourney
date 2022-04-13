@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HealthAndGameoverController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class HealthAndGameoverController : MonoBehaviour
     public bool resetHealthOnStart = true;
     public float currentHealth;
     public SliderController healthSlider;
+    public ScoreController scoreController;
 
     public void Start()
     {
@@ -53,7 +55,7 @@ public class HealthAndGameoverController : MonoBehaviour
     {
         Debug.Log("Game over");
         // TODO: play some death animation
-        // TODO: show the end-of-game screen instead of reloading level immediately
+        StaticValuesHolder.lastScore = scoreController.GetScore();
         SceneManager.LoadScene(Constants.Scenes.PauseScene);
     }
 }

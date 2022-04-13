@@ -15,4 +15,9 @@ public static class Constants
         public const string PauseScene = "PauseScene";
         public const string GameScene = "GameScene";
     }
+
+    public static class Other
+    {
+        public const string PauseSceneDescriptionObject = "Description";
+    }
 }

@@ -875,10 +875,10 @@ RectTransform:
   m_Father: {fileID: 1575182156}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -654, y: -80}
-  m_SizeDelta: {x: 32, y: 512}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 52, y: -80}
+  m_SizeDelta: {x: 32, y: -282}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1256508490
 MonoBehaviour:
@@ -1275,6 +1275,7 @@ MonoBehaviour:
   resetHealthOnStart: 1
   currentHealth: 0
   healthSlider: {fileID: 1256508491}
+  scoreController: {fileID: 1690144342}
 --- !u!58 &1517906314
 CircleCollider2D:
   m_ObjectHideFlags: 0
