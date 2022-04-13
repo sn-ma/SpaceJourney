@@ -8,9 +8,5 @@ public class WorldVelocityController : MonoBehaviour
     void Update()
     {
         velocity += acceleration * Time.deltaTime;
-
-        Vector3 position = transform.position;
-        position.y += velocity * Time.deltaTime;
-        transform.position = position;
     }
 }
