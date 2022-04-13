@@ -34,7 +34,7 @@ public class ShieldController : MonoBehaviour
     {
         while (spriteRenderer.material.color.a < 1f)
         {
-            SetAlpha(GetAlpha() + fadeInSpeed * Time.fixedDeltaTime); // TODO: or should we use just deltaTime?
+            SetAlpha(GetAlpha() + fadeInSpeed * Time.deltaTime);
             yield return null;
         }
 
@@ -42,7 +42,7 @@ public class ShieldController : MonoBehaviour
 
         while (spriteRenderer.material.color.a > 0f)
         {
-            SetAlpha(GetAlpha() - fadeOutSpeed * Time.fixedDeltaTime);
+            SetAlpha(GetAlpha() - fadeOutSpeed * Time.deltaTime);
             yield return null;
         }
     }
