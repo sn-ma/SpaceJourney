@@ -7,7 +7,7 @@ public class SpawnerDespawnerController : MonoBehaviour
     public struct PrefabAndProbability
     {
         public GameObject prefab;
-        public float probabilityPerSecond;
+        public float probabilityPerSecondPerVelocity;
     }
 
     public List<PrefabAndProbability> prefabsAndProbabilities;
@@ -28,7 +28,7 @@ public class SpawnerDespawnerController : MonoBehaviour
     {
         foreach (PrefabAndProbability entity in prefabsAndProbabilities)
         {
-            if (MyUtilities.TossACoin(entity.probabilityPerSecond * Time.deltaTime))
+            if (MyUtilities.TossACoin(entity.probabilityPerSecondPerVelocity * Time.deltaTime * worldVelocityController.velocity))
             {
                 GameObject spawnedObject = Instantiate(entity.prefab, GetRandomPos(), Quaternion.identity, spawnedParent);
                 Rigidbody2D rb = spawnedObject.GetComponent<Rigidbody2D>();

@@ -696,9 +696,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabsAndProbabilities:
   - prefab: {fileID: 2383983546304667598, guid: 9393323630866294a9f291e8eaeab0f8, type: 3}
-    probabilityPerSecond: 1
+    probabilityPerSecondPerVelocity: 0.5
   - prefab: {fileID: 2383983546304667598, guid: 66cf8fcda81963249be4a88a1cf17e52, type: 3}
-    probabilityPerSecond: 1
+    probabilityPerSecondPerVelocity: 0.5
   despawnDistance: 20
   spawnedParent: {fileID: 1633734207}
   worldVelocityController: {fileID: 1225928533}
@@ -840,8 +840,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02d0de75b203174a82b697fbab25933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 3
-  acceleration: 0.1
+  velocity: 2
+  acceleration: 0.02
 --- !u!4 &1225928534
 Transform:
   m_ObjectHideFlags: 0
@@ -998,7 +998,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1277819011}
   - component: {fileID: 1277819013}
-  - component: {fileID: 1277819012}
   m_Layer: 8
   m_Name: ModifiersHolder
   m_TagString: Untagged
@@ -1023,19 +1022,6 @@ Transform:
   m_Father: {fileID: 1517906316}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1277819012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277819010}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e320d9a43c3be0449dd37daf2005fa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaleFactor: 0.5
 --- !u!114 &1277819013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,13 +1252,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aaac2c759012c74e85f8ae07f66307c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldVelocityController: {fileID: 1225928533}
   upButtons: 1101000077000000
   downButtons: 1201000073000000
   leftButtons: 1401000061000000
   rightButtons: 1301000064000000
-  maxVelocity: 10
-  acceleration: 16
-  friction: 10
+  maxVelocityCoeff: 5
+  accelerationCoeff: 8
+  frictionCoeff: 5
 --- !u!114 &1517906312
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,16 +3,22 @@ using UnityEngine;
 
 public class Inertial2DMovement : MonoBehaviour
 {
+    public WorldVelocityController worldVelocityController;
+
     public List<KeyCode> upButtons = new List<KeyCode> { KeyCode.UpArrow, KeyCode.W };
     public List<KeyCode> downButtons = new List<KeyCode> { KeyCode.DownArrow, KeyCode.S };
     public List<KeyCode> leftButtons = new List<KeyCode> { KeyCode.LeftArrow, KeyCode.A };
     public List<KeyCode> rightButtons = new List<KeyCode> { KeyCode.RightArrow, KeyCode.D };
 
-    public float maxVelocity = 10f;
-    public float acceleration = 16f;
-    public float friction = 10f;
+    public float maxVelocityCoeff = 5f;
+    public float accelerationCoeff = 8f;
+    public float frictionCoeff = 5f;
 
     private new Rigidbody2D rigidbody2D;
+
+    private float maxVelocity;
+    private float acceleration;
+    private float friction;
 
     void Start()
     {
@@ -21,7 +27,15 @@ public class Inertial2DMovement : MonoBehaviour
 
     void Update()
     {
+        UpdateConstraints();
         UpdateVelocity(GetInputDirection());
+    }
+
+    private void UpdateConstraints()
+    {
+        maxVelocity = maxVelocityCoeff * worldVelocityController.velocity;
+        acceleration = accelerationCoeff * worldVelocityController.velocity;
+        friction = frictionCoeff * worldVelocityController.velocity;
     }
 
     private void UpdateVelocity(Vector2? inputDirection)
