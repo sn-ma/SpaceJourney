@@ -9,4 +9,10 @@ public static class Constants
         public const string Enemy = "Enemy";
         public const string HealthPoints = "HealthPoints";
     }
+
+    public static class Scenes
+    {
+        public const string PauseScene = "PauseScene";
+        public const string GameScene = "GameScene";
+    }
 }

@@ -54,6 +54,6 @@ public class HealthAndGameoverController : MonoBehaviour
         Debug.Log("Game over");
         // TODO: play some death animation
         // TODO: show the end-of-game screen instead of reloading level immediately
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload scene
+        SceneManager.LoadScene(Constants.Scenes.PauseScene);
     }
 }
