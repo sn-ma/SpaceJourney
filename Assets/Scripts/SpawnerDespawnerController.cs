@@ -44,7 +44,7 @@ public class SpawnerDespawnerController : MonoBehaviour
         {
             foreach (GameObject obj in spawned)
             {
-                if ((transform.position - obj.transform.position).sqrMagnitude > Mathf.Pow(despawnDistance, 2f))
+                if (obj == null || (transform.position - obj.transform.position).sqrMagnitude > Mathf.Pow(despawnDistance, 2f))
                 {
                     toBeRemoved.Add(obj);
                 }

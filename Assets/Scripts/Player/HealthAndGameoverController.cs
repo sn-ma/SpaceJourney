@@ -34,6 +34,10 @@ public class HealthAndGameoverController : MonoBehaviour
     private void AddAndDisplayHealth(float deltaHealth)
     {
         currentHealth += deltaHealth;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
 
         healthSlider.SetNormalizedValue(currentHealth / maxHealth);
 

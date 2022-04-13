@@ -682,6 +682,8 @@ MonoBehaviour:
     probabilityPerSecondPerVelocity: 0.5
   - prefab: {fileID: 2383983546304667598, guid: 66cf8fcda81963249be4a88a1cf17e52, type: 3}
     probabilityPerSecondPerVelocity: 0.5
+  - prefab: {fileID: 7709772589263120001, guid: 32f89cd8b33038e49827eef4051acb41, type: 3}
+    probabilityPerSecondPerVelocity: 0.1
   despawnDistance: 20
   spawnedParent: {fileID: 1633734207}
   worldVelocityController: {fileID: 1225928533}
