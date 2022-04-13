@@ -8,22 +8,22 @@ public class HealthAndGameoverController : MonoBehaviour
     public float maxHealth = 100f;
     public float unitDamage = 1f;
     public float healAmount = 30f;
-    public bool resetHealthOnStart = true;
-    public float currentHealth;
     public SliderController healthSlider;
     public ScoreController scoreController;
-    public float deathDelayTime = 2f;
     public GameObject postDestroyObject;
+
+    public AudioSource backgroundMusic;
+    public AudioSource collisionSound;
+    public AudioSource pickUpSound;
+    public AudioSource gameOverSound;
+    public AnimationCurve deltaHealthToVolumeCurve;
+
+    private float currentHealth;
 
     public void Start()
     {
-        if (resetHealthOnStart)
-        {
-            AddAndDisplayHealth(maxHealth);
-        } else
-        {
-            AddAndDisplayHealth(currentHealth);
-        }
+        currentHealth = maxHealth;
+        healthSlider.SetNormalizedValue(currentHealth / maxHealth);
     }
 
     public void TakeDamageOnCollision(float impulse)
@@ -46,11 +46,18 @@ public class HealthAndGameoverController : MonoBehaviour
 
         healthSlider.SetNormalizedValue(currentHealth / maxHealth);
 
-        // TODO: play heal, damage or death sounds
-
         if (currentHealth <= 0f)
         {
+            backgroundMusic.Stop();
+            gameOverSound.Play();
             GameOver();
+        } else if (deltaHealth < 0f)
+        {
+            collisionSound.volume = deltaHealthToVolumeCurve.Evaluate(-deltaHealth);
+            collisionSound.Play();
+        } else
+        {
+            pickUpSound.Play();
         }
     }
 
