@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class HealthAndGameoverController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class HealthAndGameoverController : MonoBehaviour
     public float currentHealth;
     public SliderController healthSlider;
     public ScoreController scoreController;
+    public float deathDelayTime = 2f;
+    public GameObject postDestroyObject;
 
     public void Start()
     {
@@ -53,9 +56,10 @@ public class HealthAndGameoverController : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("Game over");
-        // TODO: play some death animation
         StaticValuesHolder.lastScore = scoreController.GetScore();
-        SceneManager.LoadScene(Constants.Scenes.PauseScene);
+        scoreController.enabled = false;
+
+        Instantiate(postDestroyObject, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

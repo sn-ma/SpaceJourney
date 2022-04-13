@@ -1276,6 +1276,8 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 1256508491}
   scoreController: {fileID: 1690144342}
+  deathDelayTime: 2
+  postDestroyObject: {fileID: 8974996940339199139, guid: e46e9285c8cb881498ff5e0745b1cdc5, type: 3}
 --- !u!58 &1517906314
 CircleCollider2D:
   m_ObjectHideFlags: 0
