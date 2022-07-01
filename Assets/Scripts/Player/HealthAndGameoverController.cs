@@ -5,18 +5,41 @@ using System.Collections;
 
 public class HealthAndGameoverController : MonoBehaviour
 {
-    public float maxHealth = 100f;
-    public float unitDamage = 1f;
-    public float healAmount = 30f;
-    public SliderController healthSlider;
-    public ScoreController scoreController;
-    public GameObject postDestroyObject;
+    [Header("Health constants")]
+    [SerializeField]
+    private float maxHealth = 100f;
 
-    public AudioSource backgroundMusic;
-    public AudioSource collisionSound;
-    public AudioSource pickUpSound;
-    public AudioSource gameOverSound;
-    public AnimationCurve deltaHealthToVolumeCurve;
+    [SerializeField]
+    private float unitDamage = 1f;
+
+    [SerializeField]
+    private float healAmount = 30f;
+
+    [Header("Links")]
+    [SerializeField]
+    private SliderController healthSlider;
+
+    [SerializeField]
+    private ScoreController scoreController;
+
+    [SerializeField]
+    private GameObject postDestroyObject;
+
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioSource backgroundMusic;
+
+    [SerializeField]
+    private AudioSource collisionSound;
+
+    [SerializeField]
+    private AudioSource pickUpSound;
+
+    [SerializeField]
+    private AudioSource gameOverSound;
+
+    [SerializeField]
+    private AnimationCurve deltaHealthToVolumeCurve;
 
     private float currentHealth;
 

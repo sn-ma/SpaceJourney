@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class RandomiseScale : MonoBehaviour
 {
-    public float minScale = 0.5f;
-    public float maxScale = 1.5f;
+    [SerializeField]
+    private float minScale = 0.5f;
+
+    [SerializeField]
+    private float maxScale = 1.5f;
 
     void Start()
     {

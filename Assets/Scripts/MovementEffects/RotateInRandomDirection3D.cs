@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RotateInRandomDirection3D : MonoBehaviour
 {
-    public Vector3 maxAngles = new Vector3(3f, 3f, 3f);
+    [SerializeField]
+    private Vector3 maxAngles = new Vector3(3f, 3f, 3f);
 
     private Vector3 eulers = new Vector3();
 

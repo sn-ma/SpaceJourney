@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class SliderController : MonoBehaviour
 {
-    public Gradient gradient;
-    public Image fillImage;
+    [SerializeField]
+    private Gradient gradient;
+
+    [SerializeField]
+    private Image fillImage;
 
     private Slider slider;
 

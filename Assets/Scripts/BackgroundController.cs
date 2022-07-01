@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class BackgroundController : MonoBehaviour
 {
-    public float slowdownCoefficient = 2f;
+    [SerializeField]
+    private float slowdownCoefficient = 2f;
 
-    public WorldVelocityController worldVelocityController;
+    [SerializeField]
+    private WorldVelocityController worldVelocityController;
+
     private float textureUnitSizeY;
 
     void Start()

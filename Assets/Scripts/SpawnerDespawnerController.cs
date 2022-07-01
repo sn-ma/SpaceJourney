@@ -10,10 +10,17 @@ public class SpawnerDespawnerController : MonoBehaviour
         public float probabilityPerSecondPerVelocity;
     }
 
-    public List<PrefabAndProbability> prefabsAndProbabilities;
-    public float despawnDistance = 20f;
-    public Transform spawnedParent;
-    public WorldVelocityController worldVelocityController;
+    [SerializeField]
+    private List<PrefabAndProbability> prefabsAndProbabilities;
+
+    [SerializeField]
+    private float despawnDistance = 20f;
+
+    [SerializeField]
+    private Transform spawnedParent;
+
+    [SerializeField]
+    private WorldVelocityController worldVelocityController;
 
     private Sprite sprite;
     private HashSet<GameObject> spawned = new HashSet<GameObject>();

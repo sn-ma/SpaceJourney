@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class RotateByVelocity : MonoBehaviour
 {
-    public float rotationStrength = 5f;
+    [SerializeField]
+    private float rotationStrength = 5f;
 
     private new Rigidbody2D rigidbody2D;
 

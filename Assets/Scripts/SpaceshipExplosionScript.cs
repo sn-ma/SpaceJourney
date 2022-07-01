@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class SpaceshipExplosionScript : MonoBehaviour
 {
-    public float deathDelayTime = 2f;
+    [SerializeField]
+    private float deathDelayTime = 2f;
 
     public void OnParticleSystemStopped()
     {

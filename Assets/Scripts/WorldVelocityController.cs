@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class WorldVelocityController : MonoBehaviour
 {
+    [SerializeField]
     public float velocity = 10f;
-    public float acceleration = 0f;
+
+    [SerializeField]
+    private float acceleration = 0f;
 
     void Update()
     {
